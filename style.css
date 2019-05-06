@@ -1,0 +1,39 @@
+#myHome{
+	text-decoration: none;
+	color: white;
+}
+#myHome:hover {color: #12e0eb;}
+#myHome:link {color: #12e0eb;}
+#myHome:active {color: #12e0eb;}
+#myHome:visted {color: #12e0eb;}
+
+body{
+	background-color: #66CCFF;
+	color: white;
+}
+
+hr{
+	border: 2px dashed #12e0eb;
+}
+
+.midText{
+	text-align: center;
+
+}
+#makeMoner{
+	color: blue;
+	background-color: white;
+	padding: 7px;
+	border: 2px solid blue;
+	border-radius: 10px;
+	margin: 10px;
+	line-height: 30px;
+	width: 50px;
+	display: inline-block;
+	text-align:center;
+}
+.Select_blue:hover/*变色效果*/
+{
+	color: white;
+	background-color: blue;
+}

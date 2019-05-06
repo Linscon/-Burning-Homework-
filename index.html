@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		#makeMoney{
+			color: blue;
+			background-color: white;
+			padding: 7px;
+			border: 2px solid blue;
+			border-radius: 10px;
+			margin: 10px;
+			line-height: 30px;
+			width: 150px;
+			display: inline-block;
+			text-align:center;
+		}
+		#makeMoney:hover/*变色效果*/
+		{
+			color: white;
+			background-color: blue;
+		}		
+	</style>
+	<title id="title">烧了作业！</title>
+	
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script>
+		var money=0;
+		var day=1,time=1;
+		function E(id)
+		{
+			return document.getElementById(id);
+		}
+		
+		function makeMoney(){
+			money=money+1;
+			E("money").innerHTML="金币："+money;
+			alert("获得了：金币*1!");
+			sleep(300);
+		}
+		function sleep(numberMillis) 
+		{ 
+			var now = new Date(); 
+			var exitTime = now.getTime() + numberMillis; 
+			while (true) 
+			{ 
+				now = new Date(); 
+				if (now.getTime() > exitTime) 
+					return; 
+			} 
+		}
+		function 主线() {
+			E("main").innerHTML="作者正在疯狂敲代码！敬请期待！";
+		}
+	</script>
+</head>
+<body>
+	<h1 class="midText">烧了作业!</h1>
+	<hr />
+	<div style="text-align: center;">
+		 <span id="makeMoney" onclick="javascript:makeMoney()">￥</span>
+		<p id="money">金币：0</p>
+	</div>
+
+
+	<hr />
+	<div id="main"></div>
+	<div style="background-color:#66CCFF;color: white;text-align:center; font-family: 微软雅黑;font-weight: bold;margin-top:100px">
+		<hr />
+		Copyright ©linscon 2019<br>
+		欢迎分享<br>
+		<a href="https://linscon.github.io" id="myHome">进入Linscon的主页</a>
+	</div>
+	<script type="text/javascript">
+		主线();
+	</script>
+</body>
+</html>

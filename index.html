@@ -36,6 +36,17 @@
 			E("money").innerHTML="金币："+money;
 			alert("获得了：金币*1!");
 			sleep(300);
+			if(money==10)
+			{
+				alert("小伙子，不错啊！给你一点钱吧！");
+				money=money+10;
+				
+				E("money").innerHTML="金币："+money;
+				alert("获得了：金币*10!");
+				alert("不过说起来有彩蛋的呢！");
+				alert("彩蛋给你！");
+				alert("我就是彩蛋，byebye！")
+			}
 		}
 		function sleep(numberMillis) 
 		{ 
@@ -61,7 +72,7 @@
 		<p id="money">金币：0</p>
 	</div>
 
-
+	<div id="球球照片"></div>
 	<hr />
 	<div id="main"></div>
 	<div style="background-color:#66CCFF;color: white;text-align:center; font-family: 微软雅黑;font-weight: bold;margin-top:100px">

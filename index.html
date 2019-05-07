@@ -17,7 +17,25 @@
 		#makeMoney:hover/*变色效果*/
 		{
 			color: white;
-			background-color: blue;
+			background-color: #12e0eb;;
+		}
+		.select
+		{
+			color: white;
+			background-color: #12e0eb;
+			padding: 7px;
+			border: 2px solid #12e0eb;;
+			border-radius: 10px;
+			margin: 10px;
+			line-height: 30px;
+			width: 100px;
+			display: inline-block;
+			text-align:center;
+		}
+		.select:hover/*变色效果*/
+		{
+			color: #12e0eb;
+			background-color: #12e0eb;
 		}		
 	</style>
 	<title id="title">烧了作业！</title>
@@ -48,19 +66,80 @@
 				alert("我就是彩蛋，byebye！")
 			}
 		}
-		function sleep(numberMillis) 
-		{ 
-			var now = new Date(); 
-			var exitTime = now.getTime() + numberMillis; 
-			while (true) 
-			{ 
-				now = new Date(); 
-				if (now.getTime() > exitTime) 
-					return; 
-			} 
-		}
-		function 主线() {
-			E("main").innerHTML="作者正在疯狂敲代码！敬请期待！";
+		
+		function 主线() 
+		{
+			if(day==1){
+				if(time==1){
+					E("main").innerHTML="<p class=\"midText\">你准备好了吗</p>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">开始游戏</span></div>" ;
+					return ;
+				}
+				if(time==2){
+					E("title").innerHTML="序：反抗的缘起" ;
+					alert("你可知……");
+					alert("在某个神秘的国土中有一个掌管着学习的部门……");
+					alert("他们打着██的口令，打家劫舍。让很多学生发起了它们的梦想。");
+					alert("再加上██布置的作业…………");
+					alert("作业和██成掎角之势，让很多学生陷入绝境。");
+					alert(" ");
+					alert("被作业埋没，扼杀的人，起来反抗吧！");
+					alert("流浪作业计划！现在启动！！");
+					time=0;
+					day=2;
+					下一时间();
+					return ;
+
+				}
+			}
+			if(day==2){
+				if(time==1){
+					E("main").innerHTML="<p class=\"midText\">.</p>" ;
+					下一时间();
+				
+					return ;
+				}
+				if(time==2){
+					E("main").innerHTML="<p class=\"midText\">............</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">怎么了？</span></div>";
+				}
+				if(time==3){
+					E("main").innerHTML="<p class=\"midText\">600字作文</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">写</span></div>";	
+				}
+				if(time==4){
+					E("main").innerHTML="<p class=\"midText\">抄一篇作文</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">写</span></div>";		
+				}
+				if(time==5){
+					E("main").innerHTML="<p class=\"midText\">20篇古文，还要翻译……</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">写</span></div>";				
+				}
+				if(time==6){
+					E("main").innerHTML="<p class=\"midText\">5张英语卷子</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">写</span></div>";					
+				}
+				if(time==7){
+					E("main").innerHTML="<p class=\"midText\">这是两天周末的作业……</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">怎么了？</span></div>";
+				}
+				if(time==8){
+					E("main").innerHTML="<p class=\"midText\">中的四分之一</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">……</span></div>";
+				}
+				if(time==9){
+					time=0;
+					day=3;
+					E("main").innerHTML="<p class=\"midText\">你昏倒了</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">。。。</span></div>";
+				}
+				
+			}
+			if(day==3){
+				if(time==1){
+					alert("恭喜你完成序");
+					E("title").innerHTML="咕咕咕" ;
+					E("main").innerHTML="在敲代码中，等待please,thanks!" ;
+				}
+			}
+
+			
+			
+	}
+		function 下一时间(){
+			time++;
+			主线();
 		}
 	</script>
 </head>
@@ -86,3 +165,4 @@
 	</script>
 </body>
 </html>
+ <!---->

@@ -36,7 +36,9 @@
 		{
 			color: #12e0eb;
 			background-color: #12e0eb;
-		}		
+		}
+
+
 	</style>
 	<title id="title">烧了作业！</title>
 	
@@ -53,6 +55,7 @@
 			money=money+1;
 			E("money").innerHTML="金币："+money;
 			alert("获得了：金币*1!");
+			
 			if(money==10)
 			{
 				alert("小伙子，不错啊！给你一点钱吧！");
@@ -62,7 +65,7 @@
 				alert("获得了：金币*10!");
 				alert("不过说起来有彩蛋的呢！");
 				alert("彩蛋给你！");
-				alert("我就是彩蛋，byebye！")
+				alert("我就是彩蛋，byebye！");
 			}
 		}
 		
@@ -74,6 +77,8 @@
 					return ;
 				}
 				if(time==2){
+					E("目录").innerHTML="<legend>目录</legend>"
+										+"<p>序：反抗的缘起                      --已解锁</p>"
 					E("title").innerHTML="序：反抗的缘起" ;
 					alert("你可知……");
 					alert("在某个神秘的国土中有一个掌管着学习的部门……");
@@ -152,6 +157,12 @@
 
 	<div id="球球照片"></div>
 	<hr />
+	<fieldset id="目录" style="color:#1E7ACE; ">
+	    <legend>目录</legend>
+	    <p>序：??????                      --未解锁</p>
+	</fieldset>
+	<br>
+	<hr />
 	<div id="main"></div>
 	<div style="background-color:#66CCFF;color: white;text-align:center; font-family: 微软雅黑;font-weight: bold;margin-top:100px">
 		<hr />
@@ -164,4 +175,3 @@
 	</script>
 </body>
 </html>
- <!---->

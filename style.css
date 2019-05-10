@@ -21,3 +21,46 @@ hr{
 	
 }
 
+form#staff_info fieldset {  
+    background: rgba(255,255,255,.3);  
+    border-color: rgba(255,255,255,.6);  
+    border-style: solid;  
+    border-width: 2px;  
+    -moz-border-radius: 5px;  
+    -webkit-border-radius: 5px;  
+    -khtml-border-radius: 5px;  
+    border-radius: 5px;  
+    line-height: 30px;  
+    list-style: none;  
+    padding: 5px 10px;  
+    margin-bottom: 2px;  
+}  
+
+
+fieldset { 
+padding:10px; 
+margin-top:5px; 
+border:1px solid #1E7ACE; 
+background:#fff; 
+} 
+
+fieldset legend { 
+color:#1E7ACE; 
+font-weight:bold; 
+padding:3px 20px 3px 20px; 
+border:1px solid #1E7ACE;    
+background:#fff; 
+} 
+
+fieldset label { 
+float:left; 
+width:120px; 
+text-align:right; 
+padding:4px; 
+margin:1px; 
+} 
+
+fieldset div { 
+clear:left; 
+margin-bottom:2px; 
+} 

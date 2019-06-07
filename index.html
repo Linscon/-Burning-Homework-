@@ -1,3 +1,15 @@
+<!--
+ * @Description: In User Settings Edit
+ * @Author: Linscon
+ * @Date: 2019-05-11 18:09:36
+ * @LastEditTime: 2019-06-07 23:15:32
+ * @更新日志: 
+	V0.01
+	- 6.7  把加钱完善了，并且更新了些许剧情，赚钱按钮趣味性增加。开放商店功能。
+	- 5.20 增加头部注释与更新日志
+	- 5.19前 完成序及其他内容框架
+-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,10 +18,10 @@
 			color: blue;
 			background-color: white;
 			padding: 7px;
-			border: 2px solid blue;
+			border: 2px solid white;
 			border-radius: 10px;
 			margin: 10px;
-			line-height: 30px;
+			line-height: 10px;
 			width: 150px;
 			display: inline-block;
 			text-align:center;
@@ -17,7 +29,7 @@
 		#makeMoney:hover/*变色效果*/
 		{
 			color: white;
-			background-color: #12e0eb;;
+			background-color: #12e0eb;
 		}
 		.select
 		{
@@ -31,32 +43,61 @@
 			width: 100px;
 			display: inline-block;
 			text-align:center;
+			cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
 		}
 		.select:hover/*变色效果*/
 		{
-			color: #12e0eb;
+			color: white;
 			background-color: #12e0eb;
 		}
 
 
+
 	</style>
 	<title id="title">烧了作业！</title>
-	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<script>
-		var money=0;
+		var 商品购买记录=[0];
+		var 商品=[
+			{
+				"名字":"火柴Lv1",
+				"价格":30
+			}
+		];
+		var money=0,可得到钱上限=1,可得到钱下限=1;
 		var day=1,time=1;
+		var makeMoneyText=[
+			"60000字作文","200篇文言文","30000字摘抄","200个卷子","40页的练习册"
+		];
+		var makeMoneyTextt=[
+			"做","烧","盘","吃"
+		]
+		function rand(min, max){
+            var r = Math.random() * (max - min);
+            var re = Math.round(r + min);
+            re = Math.max(Math.min(re, max), min);
+             
+            return re;
+   	 }
+
+		
 		function E(id)
 		{
 			return document.getElementById(id);
 		}
 		
-		function makeMoney(){
-			money=money+1;
-			E("money").innerHTML="金币："+money;
-			alert("获得了：金币*1!");
+		function makeMoney()
+		{
+			E("makeMoneyText").innerHTML=makeMoneyText[rand(0,4)];
+			E("makeMoneyTextt").innerHTML="<p>"+makeMoneyTextt[rand(0,3)]+"</p>";
+			var getted=rand(可得到钱下限,可得到钱上限);
+			moneyAdd(getted);
+
+			alert("获得了：金币*"+getted+"!");
 			
-			if(money==10)
+			if(money==3)
 			{
 				alert("小伙子，不错啊！给你一点钱吧！");
 				money=money+10;
@@ -68,7 +109,12 @@
 				alert("我就是彩蛋，byebye！");
 			}
 		}
-		
+		function moneyAdd(added)
+		{
+			money=money+added;
+			E("money").innerHTML="金币："+money;
+			return ;
+		}
 		function 主线() 
 		{
 			if(day==1){
@@ -127,35 +173,102 @@
 					time=0;
 					day=3;
 					E("main").innerHTML="<p class=\"midText\">你昏倒了</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"下一时间()\">。。。</span></div>";
+					moneyAdd(10);
 				}
 				
 			}
 			if(day==3){
 				if(time==1){
-					alert("恭喜你完成序");
-					E("title").innerHTML="咕咕咕" ;
-					E("main").innerHTML="在敲代码中，等待please,thanks!" ;
+					E("main").innerHTML="<p class=\"midText\">你需要10金币治疗</p>"+"<br>"+"<div class=\"midText\"><span class=\"select\" onclick=\"特判1()\">好</span></div>";
 				}
+				if(time==2){
+					
+					alert("你醒了，终于");
+					var book=confirm("你要继续写作业吗") ;
+					if(book==true){
+						day=2;
+						time=2;
+						
+						主线();
+					}else{
+						
+						下一时间();
+					}
+				}
+				if(time==3){
+					
+					E("main").innerHTML="<p>"+"出去走走吧。"+"<br>"+
+						"你这样想着"+"<br>"+"好久也没呼吸这样清新的空气了。去哪里走走呢？"+"</p>"+"<br>"+"ps:你捡到20块钱"+
+						"<div class=\"midText\"><span class=\"select\" onclick=\"商店()\">去商店</span></div>"
+						;
+					moneyAdd(10);
+				}
+		
 			}
+			
 
 			
 			
-	}
+		}
+		function 商店(){
+			E("main").innerHTML="你好小朋友，看看要买什么吧"+"<br>"+
+				"<fieldset style=\"color:#1E7ACE; \">"+"<legend>商品一览</legend>"+
+					"<p>1.<b>火柴Lv1</b>：烧作业时可得到1-2个金币 价格：30</p>"+
+					"</fieldset>"+"<br>"+
+					"<button onclick=\"结账()\">点我买单</button>";
+		}
+		function 结账(){
+			var 选中购买物品=prompt("你要买几号物品（只输入编号即可）")-1;
+			
+			alert("需要支付"+商品[选中购买物品].价格+"元");
+			if(商品购买记录[选中购买物品]!=1){
+				if(商品[选中购买物品].价格>money){
+					alert("同学，你钱不够啊");
+					return ;
+				}else{
+						alert("成交！");
+						moneyAdd(商品[选中购买物品].价格*-1);
+						商品购买记录[选中购买物品]=1;
+				}
+
+				if(选中购买物品==0)
+				{
+					可得到钱上限=2;
+				}
+			}
+			else
+			{
+				alert("这个不是买过了吗？");
+			}
+		}
+
 		function 下一时间(){
 			time++;
 			主线();
+			
+		}
+		function 特判1(){
+			if(money>=10){
+				moneyAdd(-10);
+				下一时间();
+			}
+			else{
+				alert("钱不够！");
+			}
 		}
 	</script>
 </head>
 <body>
 	<h1 class="midText">烧了作业!</h1>
 	<hr />
+
 	<div style="text-align: center;">
-		 <span id="makeMoney" onclick="javascript:makeMoney()">￥</span>
+		<p id=makeMoneyText>600字作文</p>
+		<span id="makeMoney" onclick="javascript:makeMoney()"><p id=makeMoneyTextt> 烧</p></span>
 		<p id="money">金币：0</p>
 	</div>
 
-	<div id="球球照片"></div>
+	
 	<hr />
 	<fieldset id="目录" style="color:#1E7ACE; ">
 	    <legend>目录</legend>
